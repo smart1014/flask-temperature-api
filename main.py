@@ -25,7 +25,6 @@ def temperature_converter():
             t_value = float(temperature_data['value'])
         except:
             t_value = None
-
         if t_value != None:
             if temperature_data['type'].upper() == 'C':
                 # Convert from Celcius to Fahrenheit
