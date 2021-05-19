@@ -1,4 +1,4 @@
-from flask import Flask, request
+from flask import Flask, jsonify, request
 
 app = Flask(__name__)
 
@@ -29,11 +29,11 @@ def temperature_converter():
             if temperature_data['type'].upper() == 'C':
                 # Convert from Celcius to Fahrenheit
                 fahrenheit = 9.0/5.0 * t_value + 32
-                return "{:.2f}".format(fahrenheit), 200
+                return jsonify("{:.2f}".format(fahrenheit))
             elif temperature_data['type'].upper() == 'F':
                 # Convert from Fahrenheit to Celcius
                 celsius = (t_value - 32) * 5.0/9.0
-                return "{:.2f}".format(celsius), 200
-    return 'Validation Error', 200
+                return jsonify("{:.2f}".format(celsius))
+    return jsonify('Validation Error')
 
 app.run()
