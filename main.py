@@ -4,7 +4,7 @@ app = Flask(__name__)
 
 @app.route('/')
 def home():
-    return "Welcome to Temperature API Home"
+    return "<h1>Welcome to Temperature API Home</h1>"
 
 @app.route('/api/v1/converter', methods=['POST'])
 def temperature_converter():
@@ -36,4 +36,6 @@ def temperature_converter():
                 return jsonify("{:.2f}".format(celsius))
     return jsonify('Validation Error')
 
-app.run()
+if __name__ == '__main__':
+    # Threaded option to enable multiple instances for multiple user access support
+    app.run(threaded=True, port=5000)
